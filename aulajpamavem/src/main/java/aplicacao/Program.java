@@ -9,8 +9,6 @@ import dominio.Pessoa;
 public class Program {
 	public static void main(String[] args) {
 		
-		//Introdução com JPA
-		
 		Pessoa p1 = new Pessoa(null, "Carlos da Silva", "carlos@gmail.com");
 		Pessoa p2 = new Pessoa(null, "Joaquim Torres", "joaquim@gmail.com");
 		Pessoa p3 = new Pessoa(null, "Anna Maria", "anna@gmail.com");
@@ -18,15 +16,18 @@ public class Program {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();
 		
+		Pessoa p = em.find(Pessoa.class, 2); // Busca na TABELA COM JPA
+		
+		//remover no DB com JPA
+		
 		em.getTransaction().begin();
-		
-		em.persist(p1);
-		em.persist(p2);
-		em.persist(p3);
-		
+		em.remove(p);
 		em.getTransaction().commit();
 		
+		//entidade monitotada, Ou ela precisa ter sido inserida ou recuperada do DB antes de fechada a ENTITYMANAGER.
 		
 		System.out.println("Pronto");
+		em.close();
+		emf.close();
 	}
 }
