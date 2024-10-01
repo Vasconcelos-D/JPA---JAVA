@@ -9,6 +9,8 @@ import dominio.Pessoa;
 public class Program {
 	public static void main(String[] args) {
 		
+		//Introdução com JPA
+		
 		Pessoa p1 = new Pessoa(null, "Carlos da Silva", "carlos@gmail.com");
 		Pessoa p2 = new Pessoa(null, "Joaquim Torres", "joaquim@gmail.com");
 		Pessoa p3 = new Pessoa(null, "Anna Maria", "anna@gmail.com");
